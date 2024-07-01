@@ -34,6 +34,15 @@
                 </div>
                 <div class="fixed-menu" id="fixedMenu">
                     <div class="icon-container">
+                        <div class="social">
+                            <div class="language-buttons">
+                                <button class="btn-language es" id="es-mobile">ES</button>
+                                <div class="divider"></div>
+                                <button class="btn-language en" id="en-mobile">EN</button>
+                            </div>
+                            <a class="mail" href="https://github.com/francisco10-dev"><i class="fa-brands fa-github"></i></a>
+                            <a class="mail" href="https://www.linkedin.com/in/francisco-ortiz-ortiz-8387aa225"><i class="fa-brands fa-linkedin"></i></a>
+                        </div>
                         <div>
                             <i class="fa-solid fa-bars icon" id="openBtnFixed"></i>
                             <i class="fa-solid fa-xmark icon hidden" id="closeBtnFixed"></i>
@@ -157,7 +166,10 @@
                       <textarea id="message" name="message" rows="4" required data-i18n-placeholder="messagePlaceholder" placeholder="Deja un mensaje..."></textarea>
                     </div>
                     <div class="form-actions">
-                      <button class="btn-send" type="submit" data-i18n="sendButton">Enviar</button>
+                        <button class="btn-send" id="send-btn" type="submit" data-i18n="sendButton">Enviar</button>   
+                        <button class="btn-send loader" id="loader-btn" type="submit">
+                            <span class="btn-loader hidden-loader"></span>
+                        </button>                        
                     </div>
                   </form>
                 </div>

@@ -162,17 +162,24 @@ document.addEventListener("DOMContentLoaded", function () {
 
         form.addEventListener("submit", handleSubmit);
 
+    
         async function handleSubmit(event) {
             event.preventDefault();
+            const btnSend = document.getElementById('send-btn');
+            const btnLoader = document.getElementById('loader-btn');
+            btnSend.style.display = 'none';
+            btnLoader.style.display = 'inline-block';
             var status = document.getElementById("my-form-status");
             var data = new FormData(event.target);
-            fetch(event.target.action, {
-                method: form.method,
-                body: data,
-                headers: {
-                    'Accept': 'application/json'
-                }
-            }).then(response => {
+            try {
+                const response = await fetch(event.target.action, {
+                    method: form.method,
+                    body: data,
+                    headers: {
+                        'Accept': 'application/json'
+                    }
+                });
+
                 if (response.ok) {
                     status.innerHTML = `Gracias por tu mensaje, nos pondremos en contacto contigo pronto. <i class="fa-solid fa-check"></i>`;
                     form.reset();
@@ -180,17 +187,20 @@ document.addEventListener("DOMContentLoaded", function () {
                     showMessage();
                     hideMessage();
                 } else {
-                    response.json().then(data => {
-                        if (Object.hasOwn(data, 'errors')) {
-                            status.innerHTML = data["errors"].map(error => error["message"]).join(", ")
-                        } else {
-                            status.innerHTML = `Ocurrió un problema el enviar el formulario, por favor intenta más tarde o comunicate directamente al correo ortizjose451@gmail.com`;
-                        }
-                    })
+                    const errorData = await response.json();
+                    if (errorData && errorData.errors) {
+                        status.innerHTML = errorData.errors.map(error => error.message).join(", ");
+                    } else {
+                        status.innerHTML = `Ocurrió un problema al enviar el formulario, por favor intenta más tarde o comunícate directamente al correo ortizjose451@gmail.com`;
+                    }
                 }
-            }).catch(error => {
-                status.innerHTML = `Ocurrió un problema el enviar el formulario, por favor intenta más tarde o comunicate directamente al correo ortizjose451@gmail.com`;
-            });
+            } catch (error) {
+                status.innerHTML = `Ocurrió un problema al enviar el formulario, por favor intenta más tarde o comunícate directamente al correo ortizjose451@gmail.com`;
+            } finally {
+                // Restaurar botón al estado original
+                btnSend.style.display = 'inline-block';
+                btnLoader.style.display = 'none';
+            }
         }
     }
 
