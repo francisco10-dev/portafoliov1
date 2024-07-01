@@ -1,5 +1,7 @@
 document.addEventListener("DOMContentLoaded", function () {
-    AOS.init();
+    AOS.init({
+        once: true
+    });
 
     let typedInstance;  // Variable para almacenar la instancia de Typed.js
 
