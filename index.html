@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
+    <script src="https://unpkg.com/i18next@21.6.14/dist/umd/i18next.min.js"></script>
+    <title>Francisco Ortiz</title>
+</head>
+<body>
+    <div class="page-container">
+        <main class="content-wrap">
+            <header>
+                <div class="icon-container">
+                    <div class="social">
+                        <div class="language-buttons">
+                            <button class="btn-language es" id="es-mobile">ES</button>
+                            <div class="divider"></div>
+                            <button class="btn-language en" id="en-mobile">EN</button>
+                        </div>
+                        <a class="mail" href="https://github.com/francisco10-dev"><i class="fa-brands fa-github"></i></a>
+                        <a class="mail" href="https://www.linkedin.com/in/francisco-ortiz-ortiz-8387aa225"><i class="fa-brands fa-linkedin"></i></a>
+                    </div>
+                    <div>
+                        <i class="fa-solid fa-bars icon" id="openBtn"></i>
+                        <i class="fa-solid fa-xmark icon hidden" id="closeBtn"></i>                
+                    </div>
+                </div>
+                <div class="fixed-menu" id="fixedMenu">
+                    <div class="icon-container">
+                        <div>
+                            <i class="fa-solid fa-bars icon" id="openBtnFixed"></i>
+                            <i class="fa-solid fa-xmark icon hidden" id="closeBtnFixed"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="list-box">
+                    <nav>
+                        <ul>
+                            <div class="language-buttons">
+                                <button class="btn-language es" id="es-pc">ES</button>
+                                <div class="divider"></div>
+                                <button class="btn-language en" id="en-pc">EN</button>
+                            </div> 
+                            <li><a class="mail" href="https://github.com/francisco10-dev"><i class="fa-brands fa-github"></i>  GitHub</a></li>
+                            <li><a class="mail" href="https://www.linkedin.com/in/francisco-ortiz-ortiz-8387aa225"><i class="fa-brands fa-linkedin"></i>  LinkedIn</a></li>
+                        </ul>
+                    </nav>
+                </div>
+                <div class="menu" id="menu">
+                    <a href="#proyectos" class="menu-item mail2" data-i18n="projects">Proyectos</a>
+                    <a href="#tecnologias" class="menu-item mail2" data-i18n="technologies">Tecnologías</a>
+                    <a href="#contacto" class="menu-item mail2" data-i18n="contact">Contacto</a>
+                </div>
+                <div class="phrase-box">
+                    <div class="phrase">
+                        <h1><span id="typed-output"></span></h1>
+                    </div>
+                    <div class="contact-btn">
+                        <h6 data-i18n="contactBtn">CONTACTAR</h6>
+                    </div>
+                </div>
+            </header>
+                
+            <div class="about-me">
+                <div>
+                    <div class="text1">
+                        <h2 data-i18n="aboutMe">Sobre mí</h2>
+                        <hr>                
+                    </div>
+                    <div class="info">
+                        <p data-i18n="aboutMeText1">¡Hola! Soy Francisco Ortiz, un entusiasta desarrollador full stack con experiencia en la creación de aplicaciones web y móviles. Actualmente, estoy cursando la carrera de Ingeniería en Sistemas de Información, donde continúo expandiendo mis conocimientos en tecnologías como JavaScript, React, Node.js, y más.</p>
+                        <br><p data-i18n="aboutMeText2">Disfruto del desafío de transformar ideas en productos funcionales que mejoren la experiencia del usuario. Mi objetivo es seguir aprendiendo y creciendo en el campo del desarrollo de software, siempre buscando nuevas oportunidades para aplicar mis habilidades y conocimientos.</p>                
+                    </div>
+                    <div class="cv">
+                        <h6 data-i18n="downloadCV">Descargar CV</h6>
+                    </div>
+                </div>
+            </div> 
+            <div class="stack-box" id="tecnologias" data-aos="fade-up">
+                <div class="text2">
+                    <h2 data-i18n="techStack">Stack de tecnologías</h2>
+                    <hr>
+                </div>
+                <div class="stack">
+                    <img class="icon-svg" data-aos="zoom-in" data-aos-delay="200" src="img/javascript.svg" alt="JavaScript">
+                    <img class="icon-svg" data-aos="zoom-in" data-aos-delay="200" src="img/typescript.svg" alt="TypeScript">
+                    <img class="icon-svg" data-aos="zoom-in" data-aos-delay="400" src="img/react.svg" alt="React">
+                    <img class="icon-svg" data-aos="zoom-in" data-aos-delay="400" src="img/cplusplus.svg" alt="C++">
+                    <img class="icon-svg" data-aos="zoom-in" data-aos-delay="500" src="img/docker.svg" alt="Docker">
+                    <img class="icon-svg" data-aos="zoom-in" data-aos-delay="500" src="img/git.svg" alt="Git">
+                    <img class="icon-svg" data-aos="zoom-in" data-aos-delay="600" src="img/github.svg" alt="GitHub">
+                    <img class="icon-svg" data-aos="zoom-in" data-aos-delay="600" src="img/mysql.svg" alt="MySQL">
+                    <img class="icon-svg" data-aos="zoom-in" data-aos-delay="700" src="img/nodedotjs.svg" alt="NodeJS">
+                    <img class="icon-svg" data-aos="zoom-in" data-aos-delay="700" src="img/java.svg" alt="Java">
+                    <img class="icon-svg" data-aos="zoom-in" data-aos-delay="800" src="img/css3.svg" alt="CSS">
+                    <img class="icon-svg" data-aos="zoom-in" data-aos-delay="800" src="img/html5.svg" alt="HTML">
+                </div>
+            </div>
+            <div class="projects" id="proyectos" data-aos="fade-up">
+                <div class="text4">
+                    <h2 data-i18n="projectsTitle">Proyectos</h2>
+                    <hr>
+                </div>
+                <div class="projects-container">
+                    <div class="swiper saag">
+                        <div class="project-stack">
+                            <h5>SAAG | ACIB - FUNIN</h5>
+                            <div>
+                                <img class="icon-sv s" src="img/nodedotjs.svg" alt="NodeJS">
+                                <img class="icon-sv s" src="img/typescript.svg" alt="TypeScript">
+                                <img class="icon-sv s" src="img/react.svg" alt="React">
+                                <img class="icon-sv s" src="img/mysql.svg" alt="MySql">
+                                <img class="icon-sv s" src="img/express.svg" alt="MySql">
+                            </div>
+                        </div>
+                        <div class="swiper-wrapper">
+                            <div class="swiper-slide">
+                                <img src="img/saag-login.png" alt="SAAG Login" class="slide-image">
+                            </div>
+                            <div class="swiper-slide">
+                                <img src="img/dasboard.jpg" alt="SAAG Dasboard" class="slide-image">
+                            </div>
+                            <div class="swiper-slide">
+                                <img src="img/saag-colaboradores.png" alt="SAAG Colaboradores" class="slide-image">
+                            </div>
+                        </div>
+                        <div class="swiper-pagination"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-overlay" id="formOverlay">
+                <div class="form-container">
+                  <span class="closeBtn"><i class="fa-solid fa-xmark"></i></span>
+                  <form id="contactForm" action="https://formspree.io/f/mleyywoa" method="POST">
+                    <h2 data-i18n="contactFormTitle">Contactar</h2>
+                    <div class="form-group">
+                      <label for="fullName" data-i18n="fullNameLabel">Nombre completo</label>
+                      <input type="text" id="fullName" name="fullName" data-i18n-placeholder="fullNameLabel" placeholder="Nombre completo" required>
+                    </div>
+                    <div class="form-group">
+                      <label for="phone" data-i18n="phoneLabel">Número de teléfono</label>
+                      <input type="tel" id="phone" name="phone" data-i18n-placeholder="phoneLabel"  required placeholder="Número de telefono">
+                    </div>
+                    <div class="form-group">
+                      <label for="email" data-i18n="emailLabel">Correo electrónico</label>
+                      <input type="email" id="email" name="email" required placeholder="email@example.com">
+                    </div>
+                    <div class="form-group">
+                      <label for="message" data-i18n="messageLabel">Mensaje</label>
+                      <textarea id="message" name="message" rows="4" required data-i18n-placeholder="messagePlaceholder" placeholder="Deja un mensaje..."></textarea>
+                    </div>
+                    <div class="form-actions">
+                      <button class="btn-send" type="submit" data-i18n="sendButton">Enviar</button>
+                    </div>
+                  </form>
+                </div>
+            </div>
+            <div class="message">
+                <p id="my-form-status" data-i18n="thankYouMessage">Gracias por tu mensaje, nos pondremos en contacto contigo pronto. <i class="fa-solid fa-check"></i></p>
+            </div>
+            <button class="go-top" id="go-top" onclick="scrollToTop()"><i class="fa-solid fa-arrow-up-long"></i></button>            
+        </main>
+    </div>
+    <footer class="footer">
+        <div class="footer-content">
+          <div class="contact-info" id="contacto">
+            <h3 data-i18n="contactTitle">Contacto</h3>
+            <p><i class="fas fa-phone"></i> +506 6469 4072</p>
+            <p><i class="fas fa-envelope"></i> <a class="mail2" href="mailto:ortizjose451@gmail.com">ortizjose451@gmail.com</a></p>
+            <p><i class="fas fa-map-marker-alt"></i>  Guanacaste, Costa Rica</p>
+          </div>
+          <div class="social-links">
+            <a class="mail" href="https://github.com/francisco10-dev" target="_blank"><i class="fab fa-github"></i></a>
+            <a class="mail" href="https://www.linkedin.com/in/francisco-ortiz-ortiz-8387aa225" target="_blank"><i class="fab fa-linkedin"></i></a>
+            <a class="mail" href="https://wa.me/50664694072" target="_blank"><i class="fab fa-whatsapp"></i></a>
+          </div>
+        </div>
+        <div class="copyright">
+          <p>&copy; 2024 Francisco Ortiz.</p>
+        </div>
+      </footer>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+    <script src="script.js"></script>
+</body>
+</html>

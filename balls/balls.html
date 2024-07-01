@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tecnologías de Programación</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/matter-js/0.18.0/matter.min.js"></script>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            background-color: #e6f2ff; /* Azul suave */
+        }
+        #ball-container {
+            margin: 100px;
+            width: 30%;
+            height: 300px; /* Altura fija para el contenedor */
+            border: 1px solid; /* Borde ligero en lugar de sombra */
+        }
+    </style>
+</head>
+<body>
+    <div id="ball-container"></div> 
+    <script>
+        const Engine = Matter.Engine,
+            Render = Matter.Render,
+            Runner = Matter.Runner,
+            Bodies = Matter.Bodies,
+            Composite = Matter.Composite,
+            MouseConstraint = Matter.MouseConstraint,
+            Mouse = Matter.Mouse;
+
+        const engine = Engine.create({
+            constraintIterations: 3
+        });
+        const world = engine.world;
+
+        const container = document.getElementById('ball-container');
+        let width = container.clientWidth;
+        let height = container.clientHeight;
+
+        const render = Render.create({
+            element: container,
+            engine: engine,
+            options: {
+                width: width,
+                height: height,
+                wireframes: false,
+                background: '#e6f2ff',
+            }
+        });
+
+        const wallOptions = {
+            isStatic: true,
+            render: { visible: false }
+        };
+
+        const walls = [
+            Bodies.rectangle(width / 2, height + 25, width, 50, wallOptions), // Fondo
+            Bodies.rectangle(-25, height / 2, 50, height, wallOptions), // Izquierda
+            Bodies.rectangle(width + 25, height / 2, 50, height, wallOptions), // Derecha
+            Bodies.rectangle(width / 2, -25, width, 50, wallOptions) // Parte superior
+        ];
+
+        Composite.add(world, walls);
+
+        const technologies = [
+            'javascript', 'typescript', 'react', 'cplusplus', 'docker',
+            'git', 'github', 'mysql', 'nodedotjs', 'java', 'css3', 'html5'
+        ];
+
+        function createCircularImage(imgSrc) {
+            return new Promise((resolve) => {
+                const img = new Image();
+                img.onload = () => {
+                    const canvas = document.createElement('canvas');
+                    const size = 60;
+                    const padding = 12; // Ajusta este valor para aumentar el padding
+                    canvas.width = size;
+                    canvas.height = size;
+                    const ctx = canvas.getContext('2d');
+
+                    // Dibujar círculo blanco
+                    ctx.beginPath();
+                    ctx.arc(size / 2, size / 2, size / 2, 0, Math.PI * 2);
+                    ctx.fillStyle = '#ffffff';
+                    ctx.fill();
+
+                    // Dibujar la imagen con más padding
+                    const imgSize = size - 2 * padding; // Ajusta el tamaño de la imagen para incluir el padding
+                    const imgOffset = padding; // Ajusta la posición de la imagen para incluir el padding
+                    ctx.drawImage(img, imgOffset, imgOffset, imgSize, imgSize);
+
+                    resolve(canvas);
+                };
+                img.src = imgSrc;
+            });
+        }
+
+        async function createBalls() {
+            const balls = [];
+            for (const tech of technologies) {
+                const x = Math.random() * (width - 100) + 50;
+                const y = Math.random() * (height - 100) + 50;
+                const canvas = await createCircularImage(`img/${tech}.svg`);
+                
+                balls.push(Bodies.circle(x, y, 30, {
+                    restitution: 0.7,
+                    friction: 0.01,
+                    density: 0.001,
+                    render: {
+                        sprite: {
+                            texture: canvas.toDataURL()
+                        }
+                    }
+                }));
+            }
+            return balls;
+        }
+
+        createBalls().then(balls => {
+            Composite.add(world, balls);
+
+            const mouse = Mouse.create(render.canvas);
+            const mouseConstraint = MouseConstraint.create(engine, {
+                mouse: mouse,
+                constraint: {
+                    stiffness: 0.2,
+                    render: { visible: false }
+                }
+            });
+
+            Composite.add(world, mouseConstraint);
+            render.mouse = mouse;
+
+            Runner.run(engine);
+            Render.run(render);
+        });
+
+        window.addEventListener('resize', () => {
+            width = container.clientWidth;
+            height = container.clientHeight;
+
+            render.canvas.width = width;
+            render.canvas.height = height;
+            render.bounds.max.x = width;
+            render.bounds.max.y = height;
+
+            // Reposicionar las paredes
+            Matter.Body.setPosition(walls[0], Matter.Vector.create(width / 2, height + 25)); // Fondo
+            Matter.Body.setPosition(walls[1], Matter.Vector.create(-25, height / 2)); // Izquierda
+            Matter.Body.setPosition(walls[2], Matter.Vector.create(width + 25, height / 2)); // Derecha
+            Matter.Body.setPosition(walls[3], Matter.Vector.create(width / 2, -25)); // Parte superior
+
+            // Actualizar las dimensiones de las paredes
+            Matter.Body.setVertices(walls[0], [
+                { x: 0, y: height + 25 },
+                { x: width, y: height + 25 },
+                { x: width, y: height + 50 },
+                { x: 0, y: height + 50 }
+            ]);
+
+            Matter.Body.setVertices(walls[1], [
+                { x: -25, y: 0 },
+                { x: 0, y: 0 },
+                { x: 0, y: height },
+                { x: -25, y: height }
+            ]);
+
+            Matter.Body.setVertices(walls[2], [
+                { x: width, y: 0 },
+                { x: width + 25, y: 0 },
+                { x: width + 25, y: height },
+                { x: width, y: height }
+            ]);
+
+            Matter.Body.setVertices(walls[3], [
+                { x: 0, y: -25 },
+                { x: width, y: -25 },
+                { x: width, y: 0 },
+                { x: 0, y: 0 }
+            ]);
+        });
+    </script>
+</body>
+</html>
